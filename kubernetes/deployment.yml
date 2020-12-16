@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
         - name: interviewdb
-          image: vamsikkv/interviewdb:7
+          image: vamsikkv/interviewdb:8
           env:
             - name: _JAVA_OPTIONS
               value: "-Xmx1024m -Xms512m"
