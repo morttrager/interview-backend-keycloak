@@ -1,0 +1,42 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="questionSetTag">
+            <h2><span>Question Set Tag</span> {{ questionSetTag.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Q Count</span></dt>
+                <dd>
+                    <span>{{ questionSetTag.qCount }}</span>
+                </dd>
+                <dt><span>Questionset</span></dt>
+                <dd>
+                    <div *ngIf="questionSetTag.questionset">
+                        <a [routerLink]="['/question-set', questionSetTag.questionset?.id, 'view']">{{ questionSetTag.questionset?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Qtag</span></dt>
+                <dd>
+                    <div *ngIf="questionSetTag.qtag">
+                        <a [routerLink]="['/q-tag', questionSetTag.qtag?.id, 'view']">{{ questionSetTag.qtag?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/question-set-tag', questionSetTag.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

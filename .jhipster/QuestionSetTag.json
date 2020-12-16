@@ -1,0 +1,36 @@
+{
+  "name": "QuestionSetTag",
+  "fields": [
+    {
+      "fieldName": "qCount",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "questionSet",
+      "otherEntityRelationshipName": "questionSetTag",
+      "relationshipName": "questionset",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "qTag",
+      "otherEntityRelationshipName": "questionSetTag",
+      "relationshipName": "qtag",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201215152456",
+  "entityTableName": "question_set_tag",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

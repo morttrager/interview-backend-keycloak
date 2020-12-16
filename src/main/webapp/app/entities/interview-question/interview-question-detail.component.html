@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="interviewQuestion">
+            <h2><span>Interview Question</span> {{ interviewQuestion.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Score</span></dt>
+                <dd>
+                    <span>{{ interviewQuestion.score }}</span>
+                </dd>
+                <dt><span>Respone</span></dt>
+                <dd>
+                    <span>{{ interviewQuestion.respone }}</span>
+                </dd>
+                <dt><span>Time</span></dt>
+                <dd>
+                    <span>{{ interviewQuestion.time }}</span>
+                </dd>
+                <dt><span>Interviewee</span></dt>
+                <dd>
+                    <div *ngIf="interviewQuestion.interviewee">
+                        <a [routerLink]="['/interviewee', interviewQuestion.interviewee?.id, 'view']">{{ interviewQuestion.interviewee?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Question</span></dt>
+                <dd>
+                    <div *ngIf="interviewQuestion.question">
+                        <a [routerLink]="['/question', interviewQuestion.question?.id, 'view']">{{ interviewQuestion.question?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Interviewqs</span></dt>
+                <dd>
+                    <div *ngIf="interviewQuestion.interviewqs">
+                        <a [routerLink]="['/interview-question-set', interviewQuestion.interviewqs?.id, 'view']">{{ interviewQuestion.interviewqs?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/interview-question', interviewQuestion.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

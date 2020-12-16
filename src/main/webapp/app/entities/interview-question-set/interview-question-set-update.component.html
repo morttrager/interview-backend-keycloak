@@ -1,0 +1,79 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-interview-question-set-heading">Create or edit a Interview Question Set</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_active">Active</label>
+                    <input type="checkbox" class="form-control" name="active" id="field_active"
+                           formControlName="active"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_abandoned">Abandoned</label>
+                    <input type="checkbox" class="form-control" name="abandoned" id="field_abandoned"
+                           formControlName="abandoned"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_netScore">Net Score</label>
+                    <input type="number" class="form-control" name="netScore" id="field_netScore"
+                           formControlName="netScore"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_netQuestions">Net Questions</label>
+                    <input type="number" class="form-control" name="netQuestions" id="field_netQuestions"
+                           formControlName="netQuestions"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_netWeight">Net Weight</label>
+                    <input type="number" class="form-control" name="netWeight" id="field_netWeight"
+                           formControlName="netWeight"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_time">Time</label>
+                    <div class="d-flex">
+                        <input id="field_time" type="datetime-local" class="form-control" name="time" formControlName="time" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_questionset">Questionset</label>
+                    <select class="form-control" id="field_questionset" name="questionset" formControlName="questionset">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="questionSetOption.id === editForm.get('questionset')!.value?.id ? editForm.get('questionset')!.value : questionSetOption" *ngFor="let questionSetOption of questionsets; trackBy: trackById">{{ questionSetOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_interviewee">Interviewee</label>
+                    <select class="form-control" id="field_interviewee" name="interviewee" formControlName="interviewee">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="intervieweeOption.id === editForm.get('interviewee')!.value?.id ? editForm.get('interviewee')!.value : intervieweeOption" *ngFor="let intervieweeOption of interviewees; trackBy: trackById">{{ intervieweeOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="interviewQuestionSet">
+            <h2><span>Interview Question Set</span> {{ interviewQuestionSet.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Active</span></dt>
+                <dd>
+                    <span>{{ interviewQuestionSet.active }}</span>
+                </dd>
+                <dt><span>Abandoned</span></dt>
+                <dd>
+                    <span>{{ interviewQuestionSet.abandoned }}</span>
+                </dd>
+                <dt><span>Net Score</span></dt>
+                <dd>
+                    <span>{{ interviewQuestionSet.netScore }}</span>
+                </dd>
+                <dt><span>Net Questions</span></dt>
+                <dd>
+                    <span>{{ interviewQuestionSet.netQuestions }}</span>
+                </dd>
+                <dt><span>Net Weight</span></dt>
+                <dd>
+                    <span>{{ interviewQuestionSet.netWeight }}</span>
+                </dd>
+                <dt><span>Time</span></dt>
+                <dd>
+                    <span>{{ interviewQuestionSet.time }}</span>
+                </dd>
+                <dt><span>Questionset</span></dt>
+                <dd>
+                    <div *ngIf="interviewQuestionSet.questionset">
+                        <a [routerLink]="['/question-set', interviewQuestionSet.questionset?.id, 'view']">{{ interviewQuestionSet.questionset?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Interviewee</span></dt>
+                <dd>
+                    <div *ngIf="interviewQuestionSet.interviewee">
+                        <a [routerLink]="['/interviewee', interviewQuestionSet.interviewee?.id, 'view']">{{ interviewQuestionSet.interviewee?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/interview-question-set', interviewQuestionSet.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

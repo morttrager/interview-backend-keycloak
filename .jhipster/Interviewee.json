@@ -1,0 +1,25 @@
+{
+  "name": "Interviewee",
+  "fields": [
+    {
+      "fieldName": "candidateId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "remaining",
+      "fieldType": "Integer"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201215151856",
+  "entityTableName": "interviewee",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

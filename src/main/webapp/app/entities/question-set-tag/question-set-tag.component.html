@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span>Question Set Tags</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-question-set-tag" [routerLink]="['/question-set-tag/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Question Set Tag
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="questionSetTags?.length === 0">
+        <span>No questionSetTags found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="questionSetTags && questionSetTags.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Q Count</span></th>
+                    <th scope="col" ><span>Questionset</span></th>
+                    <th scope="col" ><span>Qtag</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let questionSetTag of questionSetTags ;trackBy: trackId">
+                    <td><a [routerLink]="['/question-set-tag', questionSetTag.id, 'view']">{{ questionSetTag.id }}</a></td>
+                    <td>{{ questionSetTag.qCount }}</td>
+                    <td>
+                        <div *ngIf="questionSetTag.questionset">
+                            <a [routerLink]="['/question-set', questionSetTag.questionset?.id, 'view']" >{{ questionSetTag.questionset?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="questionSetTag.qtag">
+                            <a [routerLink]="['/q-tag', questionSetTag.qtag?.id, 'view']" >{{ questionSetTag.qtag?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/question-set-tag', questionSetTag.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/question-set-tag', questionSetTag.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(questionSetTag)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

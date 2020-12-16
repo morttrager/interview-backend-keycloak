@@ -1,0 +1,73 @@
+entity Interviewee {
+    candidateId String,
+    remaining Integer
+}
+
+entity Question {
+    question String maxlength(8192),
+    answer String maxlength(8192),
+    weight Integer
+}
+
+entity InterviewQuestion {
+    score Float,
+    respone String maxlength(8192),
+    time Instant
+
+}
+
+entity QTag {
+    name String
+}
+
+entity QuestionTag {
+}
+
+entity QuestionSet {
+ name String,
+ intro String maxlength(8192),
+ outro String maxlength(8192)
+}
+
+entity QuestionSetTag {
+   qCount Integer,
+
+}
+
+entity InterviewQuestionSet {
+    active Boolean,
+    abandoned Boolean,
+    netScore Float,
+    netQuestions Integer,
+    netWeight Integer,
+    time Instant
+}
+
+relationship ManyToOne {
+    InterviewQuestionSet{questionset} to QuestionSet,
+    InterviewQuestionSet{interviewee} to Interviewee
+}
+
+relationship ManyToOne {
+    QuestionSetTag{questionset} to QuestionSet
+    QuestionSetTag{qtag} to QTag,
+
+}
+
+relationship ManyToOne {
+    InterviewQuestion{interviewee} to Interviewee,
+    InterviewQuestion{question} to Question,
+    InterviewQuestion{interviewqs} to InterviewQuestionSet
+}
+
+relationship ManyToOne {
+    QuestionTag{qtag} to QTag,
+    QuestionTag{question} to Question
+}
+
+service all with serviceImpl
+
+
+
+
+

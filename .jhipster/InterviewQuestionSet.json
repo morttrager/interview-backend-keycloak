@@ -1,0 +1,56 @@
+{
+  "name": "InterviewQuestionSet",
+  "fields": [
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "abandoned",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "netScore",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "netQuestions",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "netWeight",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "time",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "questionSet",
+      "otherEntityRelationshipName": "interviewQuestionSet",
+      "relationshipName": "questionset",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "interviewee",
+      "otherEntityRelationshipName": "interviewQuestionSet",
+      "relationshipName": "interviewee",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201215152556",
+  "entityTableName": "interview_question_set",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

@@ -1,0 +1,55 @@
+{
+  "name": "InterviewQuestion",
+  "fields": [
+    {
+      "fieldName": "score",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "respone",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "maxlength"
+      ],
+      "fieldValidateRulesMaxlength": "8192"
+    },
+    {
+      "fieldName": "time",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "interviewee",
+      "otherEntityRelationshipName": "interviewQuestion",
+      "relationshipName": "interviewee",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "question",
+      "otherEntityRelationshipName": "interviewQuestion",
+      "relationshipName": "question",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "interviewQuestionSet",
+      "otherEntityRelationshipName": "interviewQuestion",
+      "relationshipName": "interviewqs",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20201215152056",
+  "entityTableName": "interview_question",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
